@@ -66,10 +66,15 @@ end
 
 # extensions: checking the capacity of the rooms
 def test_checking_rooms_capacity
-  result = @room_1.guest_checkin_room_1(@guest_1)
+  result = @room_1.guest_checkin(@guest_1)
   assert_equal("Sorry, we are full booked", result)
 end
 
+def test_adding_guest_room_2
+  @room_2.guest_checkin(@guest_4) # here we use the function "guest_checking" and we set the arguments of room_2 to start the process of adding a guest to room_2
+  assert_equal(4, @room_2.guests.size()) # here we verified that the guest it has been added and trsnaformed the arry into a integer by using size() method in the instances of room_2
+  assert_equal(15, @room_2.karaoke_till) # here we check if the money has been added to the till, calling the instances of room_2 as it was setup in 0.
+end
 
 # advanced extensions
 

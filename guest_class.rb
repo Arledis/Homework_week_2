@@ -8,8 +8,8 @@ class Guest
     @cash = cash
   end
 
-  def guest_buy_entry(room)
-    @cash -= room.entry_fee
+  def guest_buy_entry(entry_fee)
+    @cash -= entry_fee
   end
 
 

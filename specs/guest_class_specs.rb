@@ -25,7 +25,7 @@ def test_guest_has_cash
 end
 
 def test_guest_buy_entry
-@guest.guest_buy_entry(@room_1)
+@guest.guest_buy_entry(@room_1.entry_fee)
 assert_equal(40, @guest.cash)
 end
 
