@@ -8,30 +8,31 @@ class Room
     @guests = guests
   end
 
-
 def playlist_count
-  return @room_1.playlist().length()
+  return @playlist.length()
 end
 
-def guests_count_room_1
-  return @room_1.guests.size()
+def guests_count
+  return @guests.size()
 end
 
-def checkout_guest_to_room_1(room, guest)
-  @room_1.guests.delete(guest)
+def checkout_guest(guest)
+  @guests.delete(guest)
 end
+
 
 def add_song_room(song)
-  return @playlist.push(song)
+  return @playlist.push(song) # here the arguments are placeholders.
 end
 
-# def guest_checkin_room_1
-#   if (guests >= max_guests)
-#     return "Sorry, we are full booked"
-#   else
-#     return "How Can I help u?"
-#   end
-# end
+def guest_checkin_room_1(guest)
+  if (@guests.length >= @max_guests) # guest is a propiety of the instances of the class I don't need another argument
+    return "Sorry, we are full booked"
+  else
+    @guests << guest # here I am conditioning the if statement by adding the second option if the first doesn't apply.
+  end
+end
+
 
 
 end

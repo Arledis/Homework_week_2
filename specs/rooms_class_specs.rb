@@ -22,7 +22,6 @@ class TestRoom < MiniTest::Test
     @rooms = Room.new("The Snug", 3, @playlist, 10, @guests)
     @room_1 = Room.new("The Snug", 3, @playlist, 10, @guests)
     @room_2 = Room.new("Boogie", 4, @playlist, 15, @guests)
-
   end
 def test_room_1_has_name
 assert_equal("The Snug", @room_1.room_name)
@@ -54,15 +53,25 @@ end
 
 
 # guest checking in and checking out
-# def test_guest_check_out_room_1
-#   @rooms.checkout_guest_to_room_1(@room_1, @guest_3)
-#   assert_equal(2, guests_count_room_1())
-# end
+def test_guest_check_out_rooms
+  @rooms.checkout_guest(@guest_3)
+  assert_equal(2, @rooms.guests_count())
+end
 
-# def test_add_song_to_room
-#   @room_1.add_song_room(@song_5)
-# assert_equal(4, add_song_room().length())
-# end
+# adding songs to room with a instace or property playlist
+def test_add_song_to_room
+  @room_1.add_song_room(@song_5) # using the function and passing the arguments
+assert_equal(4, @room_1.playlist.length()) # after the function has a result I have to converted using the lenght method as is an array/string not a number. So I have to converted to number.
+end
+
+# extensions: checking the capacity of the rooms
+def test_checking_rooms_capacity
+  result = @room_1.guest_checkin_room_1(@guest_1)
+  assert_equal("Sorry, we are full booked", result)
+end
+
+
+# advanced extensions
 
 
 end
